@@ -1,0 +1,68 @@
+Name: olefy
+Version: 0.0.0
+Release: 1%{?dist}
+Summary: oletools verify over TCP socket
+
+License: Apache
+URL: http://github.com/NethServer/olefy
+Source0: %{name}-%{version}.tar.gz
+
+#
+# Run pip download -r requirements.txt to retrieve additional source packages
+#
+Source12: https://github.com/HeinleinSupport/olefy/archive/23ab415f997cfe2b88c231d90adc9fc99fe0b374/olefy.tar.gz
+Source1: cffi-1.13.0.tar.gz
+Source2: colorclass-2.2.0.tar.gz
+Source3: cryptography-2.8.tar.gz
+Source4: easygui-0.98.1.tar.gz
+Source5: msoffcrypto-tool-4.10.1.tar.gz
+Source6: olefile-0.46.zip
+Source7: oletools-0.54.2.zip
+Source8: pycparser-2.19.tar.gz
+Source9: pyparsing-2.4.2.tar.gz
+Source10: python-magic-0.4.15.tar.gz
+Source11: six-1.12.0.tar.gz
+
+BuildRequires: python3
+BuildRequires: python3-devel
+BuildRequires: python3-pip
+BuildRequires: libffi-devel
+BuildRequires: openssl-devel
+
+Requires: python3
+
+%description
+This package ships the olefy (https://github.com/HeinleinSupport/olefy) TCP
+server wrapper that checks files with oletools.
+
+This package is built for NethServer 7 but could work on CentOS 7 too.
+
+%prep
+%setup -q
+%setup -D -T -b 12
+
+%install
+tdir=$(mktemp -d)
+python3 -m venv --copies ${tdir}
+${tdir}/bin/pip install \
+    --no-deps \
+    %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} \
+    %{S:7} %{S:8} %{S:9} %{S:10} %{S:11}
+mkdir -p %{buildroot}/opt
+mv ${tdir} %{buildroot}/opt/olefy
+find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/opt/olefy/bin/python|' '{}' \;
+
+%files
+%license LICENSE
+%doc README.rst
+/opt/olefy
+
+%post
+%systemd_post olefy.service
+
+%postun
+%systemd_postun
+
+%changelog
+* Tue Oct 22 2019 Davide Principi <davide.principi@nethesis.it>
+- 
