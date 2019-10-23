@@ -51,9 +51,16 @@ ${tdir}/bin/pip install \
     %{S:7} %{S:8} %{S:9} %{S:10} %{S:11}
 mkdir -p %{buildroot}/opt
 mv ${tdir} %{buildroot}/opt/olefy
+(
+    cd $RPM_BUILD_DIR
+    install -D -m 0755 olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olefy
+    install -D -m 0644 olefy-*/olefy.conf %{buildroot}/etc/opt/olefy/olefy.conf
+    install -D -m 0644 olefy-*/olefy.service %{buildroot}/usr/lib/systemd/system/olefy.service
+)
 find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/opt/olefy/bin/python|' '{}' \;
 
 %files
+%defattr (-,root,root)
 %license LICENSE
 %license LICENSE-cffi
 %license LICENSE-cryptography
@@ -69,6 +76,9 @@ find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/
 %license LICENSE-six
 %doc README.rst
 /opt/olefy
+%dir /etc/opt/olefy
+%config(noreplace) %attr(0644,root,root) /etc/opt/olefy/olefy.conf
+/usr/lib/systemd/system/olefy.service
 
 %post
 %systemd_post olefy.service
