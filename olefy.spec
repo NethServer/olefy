@@ -54,6 +54,18 @@ find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/
 
 %files
 %license LICENSE
+%license LICENSE-cffi
+%license LICENSE-cryptography
+%license LICENSE-msoffcrypto-tool
+%license LICENSE-olefile
+%license LICENSE-oletools
+%license LICENSE-oletools-3rdp-DridexUrlDecoder
+%license LICENSE-oletools-3rdp-xglob
+%license LICENSE-oletools-3rdp-xxxswf
+%license LICENSE-pycparser
+%license LICENSE-pyparsing
+%license LICENSE-python-magic
+%license LICENSE-six
 %doc README.rst
 /opt/olefy
 
