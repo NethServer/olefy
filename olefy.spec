@@ -44,6 +44,7 @@ This package is built for NethServer 7 but could work on CentOS 7 too.
 %install
 tdir=$(mktemp -d)
 python3 -m venv --copies ${tdir}
+rm -f ${tdir}/bin/activate*
 ${tdir}/bin/pip install \
     --no-deps \
     %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} \
