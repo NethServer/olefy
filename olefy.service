@@ -1,0 +1,20 @@
+[Unit]
+Description=olefy Socket Service
+Requires=network.target local-fs.target time-sync.target
+
+[Service]
+Type=simple
+User=olefy
+Group=olefy
+
+EnvironmentFile=/etc/opt/olefy/olefy.conf
+ExecStart=/usr/opt/olefy/bin/olefy
+ExecReload=/bin/kill -HUP $MAINPID
+
+TimeoutStopSec=30
+Restart=always
+RestartSec=3
+RuntimeMaxSec=4h
+
+PrivateTmp=true
+

@@ -30,6 +30,7 @@ BuildRequires: libffi-devel
 BuildRequires: openssl-devel
 
 Requires: python3
+Requires(postun): systemd
 
 %description
 This package ships the olefy (https://github.com/HeinleinSupport/olefy) TCP
@@ -51,12 +52,9 @@ ${tdir}/bin/pip install \
     %{S:7} %{S:8} %{S:9} %{S:10} %{S:11}
 mkdir -p %{buildroot}/opt
 mv ${tdir} %{buildroot}/opt/olefy
-(
-    cd $RPM_BUILD_DIR
-    install -D -m 0755 olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olefy
-    install -D -m 0644 olefy-*/olefy.conf %{buildroot}/etc/opt/olefy/olefy.conf
-    install -D -m 0644 olefy-*/olefy.service %{buildroot}/usr/lib/systemd/system/olefy.service
-)
+install -D -m 0755 %{_builddir}/olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olefy
+install -D -m 0644 olefy.conf %{buildroot}/etc/opt/olefy/olefy.conf
+install -D -m 0644 olefy.service %{buildroot}/usr/lib/systemd/system/olefy.service
 find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/opt/olefy/bin/python|' '{}' \;
 
 %files
@@ -80,12 +78,19 @@ find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/
 %config(noreplace) %attr(0644,root,root) /etc/opt/olefy/olefy.conf
 /usr/lib/systemd/system/olefy.service
 
-%post
-%systemd_post olefy.service
 
+%pre
+# ensure olefy user exists:
+if ! getent passwd olefy >/dev/null ; then
+   useradd -r -U olefy
+fi
+
+# The unit is not installed in multi-user.target: it needs to
+# be started by a dependant service (i.e. rspamd).
+# Only "postun" macro is required.
 %postun
 %systemd_postun
 
 %changelog
 * Tue Oct 22 2019 Davide Principi <davide.principi@nethesis.it>
-- 
+- Initial release
