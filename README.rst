@@ -1,6 +1,12 @@
 olefy RPM
 ---------
 
-Olefy RPM package for NethServer 7
+Olefy RPM package for NethServer/CentOS 7
 
-See `LICENSE*`` files for individual component licenses.
+- Dependencies are bundled within the RPM.
+- See `LICENSE*` files for individual component licenses.
+
+More information:
+
+- Olefy -- https://github.com/HeinleinSupport/olefy
+- NethServer -- www.nethserver.org
