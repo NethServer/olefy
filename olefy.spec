@@ -91,7 +91,7 @@ fi
 # be started by a dependant service (i.e. rspamd).
 # Only "postun" macro is required.
 %postun
-%systemd_postun
+%systemd_postun_with_restart olefy.service
 
 %changelog
 * Tue Oct 22 2019 Davide Principi <davide.principi@nethesis.it>
