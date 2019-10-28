@@ -51,7 +51,7 @@ ${tdir}/bin/pip install \
     --no-deps \
     %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} \
     %{S:7} %{S:8} %{S:9} %{S:10} %{S:11}
-${tdir}/bin/pip uninstall -y pip setuptools
+${tdir}/bin/pip uninstall -y pip
 mkdir -p %{buildroot}/opt
 mv ${tdir} %{buildroot}/opt/olefy
 install -D -m 0755 %{_builddir}/olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olefy
