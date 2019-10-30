@@ -87,9 +87,9 @@ if ! getent passwd olefy >/dev/null ; then
    useradd -r -U olefy
 fi
 
-# The unit is not installed in multi-user.target: it needs to
-# be started by a dependant service (i.e. rspamd).
-# Only "postun" macro is required.
+%preun
+%systemd_preun olefy.service
+
 %postun
 %systemd_postun_with_restart olefy.service
 
