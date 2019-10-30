@@ -56,7 +56,7 @@ mkdir -p %{buildroot}/opt
 mv ${tdir} %{buildroot}/opt/olefy
 install -D -m 0755 %{_builddir}/olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olefy
 install -D -m 0644 olefy.conf %{buildroot}/etc/opt/olefy/olefy.conf
-install -D -m 0644 olefy.service %{buildroot}/usr/lib/systemd/system/olefy.service
+install -D -m 0644 olefy.service %{buildroot}%{_unitdir}/olefy.service
 find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/opt/olefy/bin/python|' '{}' \;
 
 %files
@@ -78,7 +78,7 @@ find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/
 /opt/olefy
 %dir /etc/opt/olefy
 %config(noreplace) %attr(0644,root,root) /etc/opt/olefy/olefy.conf
-/usr/lib/systemd/system/olefy.service
+%{_unitdir}/olefy.service
 
 
 %pre
