@@ -1,5 +1,5 @@
 Name: olefy
-Version: 0.0.0
+Version: 1.0.0
 Release: 1%{?dist}
 Summary: oletools verify over TCP socket
 
@@ -94,5 +94,8 @@ fi
 %systemd_postun_with_restart olefy.service
 
 %changelog
+* Wed Nov 20 2019 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1
+- Scan MS Office files for bad macros - NethServer/dev#5891
+
 * Tue Oct 22 2019 Davide Principi <davide.principi@nethesis.it>
 - Initial release
