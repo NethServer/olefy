@@ -1,5 +1,5 @@
 Name: olefy
-Version: 1.0.0
+Version: 1.0.1
 Release: 1%{?dist}
 Summary: oletools verify over TCP socket
 
@@ -94,6 +94,9 @@ fi
 %systemd_postun_with_restart olefy.service
 
 %changelog
+* Mon Dec 02 2019 Davide Principi <davide.principi@nethesis.it> - 1.0.1-1
+- Olefy TCP port 10050 conflict - Bug NethServer/dev#5963
+
 * Wed Nov 20 2019 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1
 - Scan MS Office files for bad macros - NethServer/dev#5891
 
