@@ -17,11 +17,12 @@ Source3: cryptography-2.8.tar.gz
 Source4: easygui-0.98.1.tar.gz
 Source5: msoffcrypto-tool-4.10.1.tar.gz
 Source6: olefile-0.46.zip
-Source7: oletools-0.54.2.zip
+Source7: oletools-0.55.zip
 Source8: pycparser-2.19.tar.gz
 Source9: pyparsing-2.4.2.tar.gz
 Source10: python-magic-0.4.15.tar.gz
 Source11: six-1.12.0.tar.gz
+Source13: pcodedmp-1.2.6.tar.gz
 
 BuildRequires: python3
 BuildRequires: python3-devel
@@ -50,7 +51,7 @@ rm -f ${tdir}/bin/activate*
 ${tdir}/bin/pip install \
     --no-deps \
     %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} \
-    %{S:7} %{S:8} %{S:9} %{S:10} %{S:11}
+    %{S:7} %{S:8} %{S:9} %{S:10} %{S:11} %{S:13}
 ${tdir}/bin/pip uninstall -y pip
 mkdir -p %{buildroot}/opt
 mv ${tdir} %{buildroot}/opt/olefy
@@ -74,6 +75,7 @@ find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/
 %license LICENSE-pyparsing
 %license LICENSE-python-magic
 %license LICENSE-six
+%license LICENSE-pcodedmp
 %doc README.rst
 /opt/olefy
 %dir /etc/opt/olefy
