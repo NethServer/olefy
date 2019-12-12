@@ -17,7 +17,7 @@ Source3: cryptography-2.8.tar.gz
 Source4: easygui-0.98.1.tar.gz
 Source5: msoffcrypto-tool-4.10.1.tar.gz
 Source6: olefile-0.46.zip
-Source7: oletools-0.54.2.zip
+Source7: oletools-0.55.zip
 Source8: pycparser-2.19.tar.gz
 Source9: pyparsing-2.4.2.tar.gz
 Source10: python-magic-0.4.15.tar.gz
