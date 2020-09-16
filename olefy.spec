@@ -41,7 +41,7 @@ This package is built for NethServer 7 but could work on CentOS 7 too.
 
 %prep
 %setup -q
-%setup -D -T -b 12
+%setup -q -D -T -b 12
 
 %install
 tdir=$(mktemp -d)
