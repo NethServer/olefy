@@ -10,14 +10,14 @@ Source0: %{name}-%{version}.tar.gz
 #
 # Run pip download -r requirements.txt to retrieve additional source packages
 #
-Source12: https://github.com/HeinleinSupport/olefy/archive/23ab415f997cfe2b88c231d90adc9fc99fe0b374/olefy.tar.gz
+Source12: https://github.com/HeinleinSupport/olefy/archive/738079cbc1fda7db85917ee3764222d55f5b1b3c/olefy.tar.gz
 Source1: cffi-1.13.0.tar.gz
 Source2: colorclass-2.2.0.tar.gz
 Source3: cryptography-2.8.tar.gz
 Source4: easygui-0.98.1.tar.gz
 Source5: msoffcrypto-tool-4.10.1.tar.gz
 Source6: olefile-0.46.zip
-Source7: oletools-0.55.zip
+Source7: oletools-master.zip
 Source8: pycparser-2.19.tar.gz
 Source9: pyparsing-2.4.2.tar.gz
 Source10: python-magic-0.4.15.tar.gz
@@ -41,7 +41,7 @@ This package is built for NethServer 7 but could work on CentOS 7 too.
 
 %prep
 %setup -q
-%setup -D -T -b 12
+%setup -q -D -T -b 12
 
 %install
 tdir=$(mktemp -d)
