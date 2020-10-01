@@ -1,5 +1,5 @@
 Name: olefy
-Version: 1.2.0
+Version: 1.2.1
 Release: 1%{?dist}
 Summary: oletools verify over TCP socket
 
@@ -96,6 +96,9 @@ fi
 %systemd_postun_with_restart olefy.service
 
 %changelog
+* Thu Oct 01 2020 Davide Principi <davide.principi@nethesis.it> - 1.2.1-1
+- Bump oletools 0.56 -- NethServer/olefy@11d252f
+
 * Wed Sep 23 2020 Davide Principi <davide.principi@nethesis.it> - 1.2.0-1
 - Upstream Olefy and Oletools fixes for multiple issues - NethServer/dev#6271
 - Bump oletools 0.56dev10 and olefy from master branch
