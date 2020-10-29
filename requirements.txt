@@ -4,7 +4,7 @@ cryptography==2.8
 easygui==0.98.1
 msoffcrypto-tool==4.10.1
 olefile==0.46
-oletools @ https://github.com/decalage2/oletools/archive/46eb60f6b7a869dfb61cb215dcf88523e844d75b/oletools-master.zip
+oletools @ https://github.com/HeinleinSupport/oletools/archive/411a92111571d8f46cde2a0392f9453440f5e8db/oletools-master.zip
 pycparser==2.19
 pyparsing==2.4.2
 python-magic==0.4.15
