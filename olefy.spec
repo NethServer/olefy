@@ -1,5 +1,5 @@
 Name: olefy
-Version: 1.2.1
+Version: 1.2.3
 Release: 1%{?dist}
 Summary: oletools verify over TCP socket
 
@@ -96,6 +96,9 @@ fi
 %systemd_postun_with_restart olefy.service
 
 %changelog
+* Wed Nov 04 2020 Davide Principi <davide.principi@nethesis.it> - 1.2.3-1
+- Official Olefy 0.56 does not block macro virus - Bug NethServer/dev#6321
+
 * Thu Oct 01 2020 Davide Principi <davide.principi@nethesis.it> - 1.2.1-1
 - Bump oletools 0.56 -- NethServer/olefy@11d252f
 
