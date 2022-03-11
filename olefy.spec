@@ -8,7 +8,7 @@ URL: http://github.com/NethServer/olefy
 Source0: %{name}-%{version}.tar.gz
 
 #
-# Run pip download -r requirements.txt to retrieve additional source packages
+# Run pip download --no-deps -r requirements.txt to retrieve additional source packages
 #
 Source12: https://github.com/HeinleinSupport/olefy/archive/9a3d5780394b7a0126981f0115a110d69aad60a0/olefy.tar.gz
 Source1: cffi-1.13.0.tar.gz
@@ -49,7 +49,7 @@ chmod 755 ${tdir}
 python3 -m venv --copies ${tdir}
 rm -f ${tdir}/bin/activate*
 ${tdir}/bin/pip install \
-    --no-deps \
+    --pre --no-deps \
     %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} \
     %{S:7} %{S:8} %{S:9} %{S:10} %{S:11} %{S:13}
 ${tdir}/bin/pip uninstall -y pip

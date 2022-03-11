@@ -28,7 +28,7 @@ env:
         "
 
 install:
-    - "pip download --no-binary=:all: -r requirements.txt -d ."
+    - "pip download --no-deps --no-binary=:all: -r requirements.txt -d ."
 
 script: >
     docker run -ti --name makerpms ${EVARS}
