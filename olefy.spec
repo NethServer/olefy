@@ -10,7 +10,7 @@ Source0: %{name}-%{version}.tar.gz
 #
 # Run pip download -r requirements.txt to retrieve additional source packages
 #
-Source12: https://github.com/HeinleinSupport/olefy/archive/738079cbc1fda7db85917ee3764222d55f5b1b3c/olefy.tar.gz
+Source12: https://github.com/HeinleinSupport/olefy/archive/9a3d5780394b7a0126981f0115a110d69aad60a0/olefy.tar.gz
 Source1: cffi-1.13.0.tar.gz
 Source2: colorclass-2.2.0.tar.gz
 Source3: cryptography-2.8.tar.gz
