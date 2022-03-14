@@ -59,6 +59,7 @@ install -D -m 0755 %{_builddir}/olefy-*/olefy.py %{buildroot}/opt/olefy/bin/olef
 install -D -m 0644 olefy.conf %{buildroot}/etc/opt/olefy/olefy.conf
 install -D -m 0644 olefy.service %{buildroot}%{_unitdir}/olefy.service
 find %{buildroot}/opt/olefy/bin -type f -executable -exec sed -i '1 s|^#!.*$|#!/opt/olefy/bin/python|' '{}' \;
+ln -s /opt/olefy/bin/olevba %{buildroot}/opt/olefy/bin/olevba3 || :
 
 %files
 %defattr (-,root,root)
